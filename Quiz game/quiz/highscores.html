@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>High Scores</title>
+        <link rel="stylesheet" href="css/app.css" />
+        <link rel="stylesheet" href="css/highscores.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="https://cdn6.aptoide.com/imgs/2/3/4/234661a56001967db37e0a97326ca0a5_icon.png" type="image/gif" sizes="16x16">
+    </head>
+    <body>
+        <header>
+            <div class="header">
+                <div class="header-container">
+                    <nav>
+                        <a href="index.html"><i class="fa fa-home" aria-hidden="true" style="color: white"></i> Home</a>
+                        <a href="game.html"><i class="fa fa-play-circle" aria-hidden="true" style="color: white"></i> Play Again</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div id="highScores" class="flex-center flex-column">
+                <h1 id="finalScore">High Scores</h1>
+                <div class="list-type1">
+                    <ol id="highScoresList"></ol>
+                </div>
+                <a class="btn" href="index.html">Go Home</a>
+            </div>
+        </div>
+        <script src="js/highscores.js"></script>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('serviceworker.js')
+                    .then(() => navigator.serviceWorker.ready.then((worker) => {
+                        worker.sync.register('syncdata');
+                    }))
+                    .catch((err) => console.log(err));
+            }
+        </script>
+    </body>
+</html>

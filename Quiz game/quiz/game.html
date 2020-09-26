@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Quiz Game - Play</title>
+        <link rel="stylesheet" href="css/app.css"/>
+        <link rel="stylesheet" href="css/game.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="https://cdn6.aptoide.com/imgs/2/3/4/234661a56001967db37e0a97326ca0a5_icon.png" type="image/gif" sizes="16x16">
+    </head>
+    <body>
+        <header>
+            <div class="header">
+                <div class="header-container">
+                    <nav>
+                        <a href="index.html"><i class="fa fa-home" aria-hidden="true" style="color: white"></i> Home</a>
+                        <a href="highscores.html"><i class="fa fa-list-ol" aria-hidden="true" style="color: white"></i> High Scores</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div id="game" class="justify-center flex-column">
+                <div id="hud">
+                    <div id="hud-item-1">
+                        <p id="progressText" class="hud-prefix">Question</p>
+                        <div id="progressBar">
+                            <div id="progressBarFull"></div>
+                        </div>
+                    </div>
+                    <div id="hud-item-2">
+                        <p class="hud-prefix">Score</p>
+                        <h1 class="hud-main-text" id="score">0</h1>
+                    </div>
+                </div>
+                <h2 id="question">What is the answer to this questions?</h2>
+                <div class="choice-container" onclick="audio()">
+                    <p class="choice-prefix">
+                        <svg height="15" width="15">
+                            <text x="3" y="15" fill="white">A</text>
+                        </svg>
+                    </p>
+                    <p class="choice-text" data-number="1">Choice 1</p>
+                </div>
+                <div class="choice-container" onclick="audio()">
+                    <p class="choice-prefix">
+                        <svg height="15" width="15">
+                            <text x="3" y="15" fill="white">B</text>
+                        </svg>
+                    </p>
+                    <p class="choice-text" data-number="2">Choice 2</p>
+                </div>
+                <div class="choice-container" onclick="audio()">
+                    <p class="choice-prefix">
+                        <svg height="15" width="15">
+                            <text x="3" y="15" fill="white">C</text>
+                        </svg>
+                    </p>
+                    <p class="choice-text" data-number="3">Choice 3</p>
+                </div>
+                <div class="choice-container" onclick="audio()">
+                    <p class="choice-prefix">
+                        <svg height="15" width="15">
+                            <text x="3" y="15" fill="white">D</text>
+                        </svg>
+                    </p>
+                    <p class="choice-text" data-number="4">Choice 4</p>
+                </div>
+            </div>
+            <audio id="audio" autoplay>
+                <source src="media/music.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <script src="js/game.js"></script>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('serviceworker.js')
+                    .then(() => navigator.serviceWorker.ready.then((worker) => {
+                        worker.sync.register('syncdata');
+                    }))
+                    .catch((err) => console.log(err));
+            }
+        </script>
+    </body>
+</html>

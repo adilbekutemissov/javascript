@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Quick Game</title>
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="icon" href="https://cdn6.aptoide.com/imgs/2/3/4/234661a56001967db37e0a97326ca0a5_icon.png" type="image/gif" sizes="16x16">
+  </head>
+  <body>
+    <div class="container">
+      <div id="home" class="flex-center flex-column">
+        <h1>Quiz Game</h1>
+        <a class="btn" href="game.html">Play</a>
+        <a class="btn" href="highscores.html">High Scores</a>
+      </div>
+    </div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('serviceworker.js')
+          .then(() => navigator.serviceWorker.ready.then((worker) => {
+            worker.sync.register('syncdata');
+          }))
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html>
